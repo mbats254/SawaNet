@@ -19,10 +19,9 @@ class CreateLandsTable extends Migration
             $table->string('location');
             $table->string('property_size');
             $table->string('features');
-            $table->longText('details');
-            $table->string('map');            
-            $table->string('main_photo');            
-            $table->string('other_photos');            
+            $table->string('map')->nullable();
+            $table->string('main_photo');
+            $table->string('other_photos')->nullable();
             $table->timestamps();
         });
     }
