@@ -4,7 +4,7 @@
         <li data-target="#demo" data-slide-to="1"></li>
     </ul>
     <div class="carousel-inner">
-        <div class="carousel-item active" style="background-image: url('images/slide.png')">
+        <div class="carousel-item active" style="background-image: url('images/main_photo_DHAHABU_RIDGES_PHASE_III_-_SAGANA5e6013217920b.png')">
             <div class="carousel-caption">
                 <h1 style="font-size: 42px" class="font-weight-bolder">Welcome to {{ env('APP_NAME') }}</h1>
                 <p class="lead">
@@ -14,7 +14,7 @@
                 </p>
             </div>
         </div>
-        <div class="carousel-item" style="background-image: url('images/slide.png')">
+        <div class="carousel-item" style="background-image: url('images/main_photo_DHAHABU_RIDGES_PHASE_III_-_SAGANA5e6013217920b.png')">
             <div class="carousel-caption">
                 <h1 style="font-size: 42px" class="font-weight-bolder">{{ env('APP_NAME') }}, Who Are We?</h1>
                 <p class="lead">
