@@ -13,4 +13,8 @@ class School extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function class()
+    {
+        return $this->hasOne('App\Darasa','school_id');
+    }
 }

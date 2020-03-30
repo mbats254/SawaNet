@@ -16,7 +16,8 @@ class CreateDarasasTable extends Migration
         Schema::create('darasas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('subject_array');
+            $table->string('subject_array')->nullable();
+            $table->string('school_id');
             $table->timestamps();
         });
     }
