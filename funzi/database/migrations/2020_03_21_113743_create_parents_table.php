@@ -19,6 +19,7 @@ class CreateParentsTable extends Migration
             $table->string('email');
             $table->string('children_array');
             $table->string('phone_number');
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

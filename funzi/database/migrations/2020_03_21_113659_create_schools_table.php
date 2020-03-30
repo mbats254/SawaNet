@@ -17,7 +17,6 @@ class CreateSchoolsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('principal_id');
-            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }
