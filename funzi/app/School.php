@@ -17,4 +17,8 @@ class School extends Model
     {
         return $this->hasOne('App\Darasa','school_id');
     }
+    public function principal()
+    {
+        return $this->hasOne('App\User','principal_id');
+    }
 }

@@ -19,9 +19,11 @@ Auth::routes();
 
 //school routes
 Route::get('/input/class', 'SchoolController@addclass')->name('add.new.class');
+Route::get('/input/teacher', 'SchoolController@addteacher')->name('add.new.teacher');
 Route::get('/input/parent/{uniqid?}', 'SchoolController@addparent')->name('add.new.parent');
 Route::post('/post/class', 'SchoolController@post_class')->name('post.class');
 Route::post('/post/parent', 'SchoolController@post_parent')->name('post.parents');
+Route::post('/post/teacher', 'SchoolController@post_teachers')->name('post.teachers');
 
 
 //home routes
