@@ -8,13 +8,13 @@
                         @php $url = "merchant" @endphp
                         <h5 class="mb-2">Dashboard</h5>
                         <ul class="nav flex-column sidebar">
-                            <li class="nav-item @if(request()->is("$url")) active @endif">
-                                <a class="nav-link" href="{{ url($url) }}"><i data-feather="airplay"></i>Home</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}"><i data-feather="airplay"></i>Home</a>
                             </li>
-                            <li class="nav-item @if(request()->is("$url/products*")) active @endif">
-                                <a class="nav-link" href="{{ url("$url/products") }}"><i data-feather="clipboard"></i>Products</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url("/all/properties") }}"><i data-feather="clipboard"></i>Properties</a>
                             </li>
-                            <li class="nav-item @if(request()->is("$url/orders*")) active @endif">
+                            {{-- <li class="nav-item @if(request()->is("$url/orders*")) active @endif">
                                 <a class="nav-link" href="{{ url("$url/orders") }}"><i data-feather="shopping-cart"></i>Orders</a>
                             </li>
                             <li class="nav-item @if(request()->is("$url/payments*")) active @endif">
@@ -22,7 +22,7 @@
                             </li>
                             <li class="nav-item @if(request()->is("$url/account*")) active @endif">
                                 <a class="nav-link" href="{{ url("$url/account") }}"><i data-feather="user"></i>Account</a>
-                            </li>
+                            </li> --}}
                             {{--<li class="nav-item">--}}
                                 {{--<a class="nav-link" href="{{ url("home/apply/merchant?edit=true") }}"><i--}}
                                             {{--data-feather="settings"></i>Settings</a>--}}

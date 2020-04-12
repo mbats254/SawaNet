@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="content">
-                    <img src="{{ url('images/logo-bg.png') }}" class="w-100 mb-4">
+                    <img src="{{ url('land_photos/main_photo_DHAHABU_RIDGES_PHASE_III_-_SAGANA5e6013217920b.png') }}" class="w-100 mb-4">
                     <h4>Who Are We</h4>
                     <ul>
                         <li>
@@ -132,7 +132,7 @@
                                 @enderror
                             </div>
                         </div>
-<!-- 
+<!--
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">National ID</label>
                             <div class="col-md-6">
@@ -168,7 +168,7 @@
                             <div class="col-md-6">
                                 <select name="type" class="form-control">
                                     <option value="">User</option>
-                                    
+
                                 </select>
                             </div>
                         </div> -->
