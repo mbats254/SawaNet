@@ -41,9 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\School','principal_id');
     }
-    public function parents()
+    public function parent()
     {
-        return $this->hasOne('App\Parent','user_id');
+        return $this->hasOne('App\Parents','user_id');
     }
     public function teacher()
     {

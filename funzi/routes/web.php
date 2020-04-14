@@ -48,4 +48,5 @@ Route::get('/teacher/home', 'TeacherController@teacher_home')->name('teacher.hom
 
 //parent routes
 Route::get('/parent/home', 'StudentController@parent_home')->name('parent.home');
+Route::get('/students/my/children', 'StudentController@children_array')->name('children.array');
 

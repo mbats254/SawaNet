@@ -8,6 +8,7 @@ use \App\Darasa;
 use \App\Student;
 use \App\User;
 use App\Notifications\WelcomeUser;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -47,5 +48,17 @@ $student =  Student::updateorCreate([
      public function parent_home(Request $request)
      {
          return view('parent.home');
+     }
+     public function children_array(Request $request)
+     {
+         $parent = Auth::user()->parent;
+         $children = [];
+         $array = explode(',',$parent->children_array);
+         for($i=0;$i<sizeof($array);$i++)
+         {
+             $student_details = Student::find($array[$i]);
+             array_push($children,$student_details);
+         }
+        return view('parent.children_array',compact('parent','children'));
      }
 }

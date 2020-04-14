@@ -95,6 +95,13 @@
 
                                     </a>
                                 </li>
+                                <?php elseif(\Auth::user()->parent): ?>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(route('children.array')); ?>">
+                                            <i class="fa fa-info text-primary"></i> <?php echo e(__('Children Status')); ?>
+
+                                        </a>
+                                    </li>
                             <?php endif; ?>
                         </ul>
                     </div>

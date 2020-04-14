@@ -101,6 +101,12 @@
                                         <i class="fa fa-info text-primary"></i> {{ __('Select Class Assigned') }}
                                     </a>
                                 </li>
+                                @elseif(\Auth::user()->parent)
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('children.array') }}">
+                                            <i class="fa fa-info text-primary"></i> {{ __('Children Status') }}
+                                        </a>
+                                    </li>
                             @endif
                         </ul>
                     </div>
