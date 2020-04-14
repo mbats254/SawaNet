@@ -1,7 +1,7 @@
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
         <a class="navbar-brand" href="user">
-            <img src="<?php echo e(asset('argon')); ?>/img/brand/white.png" />
+            
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,4 +25,5 @@
             </div>
         </div>
     </div>
-</nav><?php /**PATH D:\Laravel Projects\funzi\resources\views/layouts/navbars/navs/guest.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH D:\Laravel Projects\funzi\resources\views/layouts/navbars/navs/guest.blade.php ENDPATH**/ ?>
