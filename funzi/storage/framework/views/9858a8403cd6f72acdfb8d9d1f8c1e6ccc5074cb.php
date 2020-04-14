@@ -66,7 +66,7 @@
 
                     </a>
                 </li>
-
+                <?php if(\Auth::user()->role == 'principal'): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('add.new.teacher')); ?>">
                         <i class="fa fa-handshake text-primary"></i> <?php echo e(__('Add Teacher')); ?>
@@ -88,6 +88,14 @@
 
 			                    </a>
                             </li>
+                            <?php elseif(\Auth::user()->teacher): ?>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo e(route('set.subjects')); ?>">
+                                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Select Class Assigned')); ?>
+
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </li>

@@ -71,7 +71,7 @@
                         <i class="fa fa-home text-primary"></i> {{ __('Home') }}
                     </a>
                 </li>
-
+                @if(\Auth::user()->role == 'principal')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('add.new.teacher') }}">
                         <i class="fa fa-handshake text-primary"></i> {{ __('Add Teacher') }}
@@ -95,6 +95,13 @@
 			                        <i class="fa fa-info text-primary"></i> {{ __('Add Class') }}
 			                    </a>
                             </li>
+                            @elseif(\Auth::user()->teacher)
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('set.subjects') }}">
+                                        <i class="fa fa-info text-primary"></i> {{ __('Select Class Assigned') }}
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </li>

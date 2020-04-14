@@ -40,4 +40,12 @@ $student =  Student::updateorCreate([
          $user->notify(new WelcomeUser($user));
          return redirect()->route('add.new.parent',$user->uniqid);
      }
+     public function student_home(Request $request)
+     {
+         return view('student.home');
+     }
+     public function parent_home(Request $request)
+     {
+         return view('parent.home');
+     }
 }

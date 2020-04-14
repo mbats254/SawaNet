@@ -27,7 +27,31 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function redirectTo()
+    {
+        // User role based on role_id 1 for applicant and 2 for employer
+
+        $role = Auth::user()->role;
+        // Check user role
+
+   if($role == 'principal')
+   {
+       return route('home');
+   }else if($role == 'teacher')
+   {
+        return route('teacher.home');
+   }else if($role == 'student')
+   {
+        return route('student.home');
+   }
+   else if($role == 'parent')
+   {
+        return route('parent.home');
+   }
+
+
+    }
 
     /**
      * Create a new controller instance.
