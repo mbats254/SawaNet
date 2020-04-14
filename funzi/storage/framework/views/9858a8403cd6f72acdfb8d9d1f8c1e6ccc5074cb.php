@@ -5,9 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="/home">
-            <img src="<?php echo e(asset('argon')); ?>/img/brand/blue.png" class="navbar-brand-img" alt="...">
-        </a>
+        
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
