@@ -70,30 +70,23 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/beta/grants/index">
-                        <i class="fa fa-handshake text-primary"></i> <?php echo e(__('Grants')); ?>
+                    <a class="nav-link" href="<?php echo e(route('add.new.teacher')); ?>">
+                        <i class="fa fa-handshake text-primary"></i> <?php echo e(__('Add Teacher')); ?>
 
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link" href="<?php echo e(route('add.student')); ?>" >
                         <i class="fa fa-tasks text-primary"></i>
-                        <span class="nav-link-text text-primary"><?php echo e(__('Programmes')); ?></span>
+                        <span class="nav-link-text text-primary"><?php echo e(__('Add Students')); ?></span>
                     </a>
 
-                    <div class="collapse" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/workshops">
-			                        <i class="fa fa-building text-primary"></i> <?php echo e(__('Workshops')); ?>
-
-			                    </a>
-                            </li>
+                                           </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="/newsletters">
-			                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Newsletters')); ?>
+                                <a class="nav-link" href="<?php echo e(route('add.new.class')); ?>">
+			                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Add Class')); ?>
 
 			                    </a>
                             </li>

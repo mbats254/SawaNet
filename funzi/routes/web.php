@@ -24,6 +24,8 @@ Route::get('/input/parent/{uniqid?}', 'SchoolController@addparent')->name('add.n
 Route::post('/post/class', 'SchoolController@post_class')->name('post.class');
 Route::post('/post/parent', 'SchoolController@post_parent')->name('post.parents');
 Route::post('/post/teacher', 'SchoolController@post_teachers')->name('post.teachers');
+Route::get('/add/subjects', 'SchoolController@add_subjects')->name('add.subjects');
+Route::post('/post/subjects', 'SchoolController@post_subject')->name('post.subject');
 
 
 //home routes
@@ -37,3 +39,8 @@ Route::post('/post/students', 'StudentController@post_student')->name('post.stud
 //user routes
 Route::get('/set/credentials/{uniqid}', 'UserController@set_credentials')->name('set.credentials');
 Route::post('/post/credentials', 'UserController@post_credentials')->name('post.credentials');
+
+//teacher routes
+Route::get('/set/subjects', 'SchoolController@set_subjects')->name('set.subjects');
+Route::post('/select/subject/post', 'SchoolController@subject_teacher_post')->name('select.subject.post');
+

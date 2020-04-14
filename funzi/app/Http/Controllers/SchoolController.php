@@ -10,6 +10,8 @@ use \App\Student;
 use \App\Parents;
 use \App\School;
 use \App\Teacher;
+use \App\Subject;
+use \App\Teacher_Assign;
 use App\Notifications\WelcomeUser;
 
 class SchoolController extends Controller
@@ -103,5 +105,37 @@ $request->session()->flash("success", "Parent Added Successfully!");
          Log::info("Teacher Added Successfully");
         $request->session()->flash("success", "Teacher Added Successfully!");
          return redirect()->route('home');
+    }
+    public function add_subjects(Request $request)
+    {
+        return view('subject.create_subject');
+    }
+    public function set_subjects(Request $request)
+    {
+        $classes = Darasa::get();
+
+        $subjects = Subject::get();
+        return view('teacher.select_subject',compact('classes','subjects'));
+    }
+    public function post_subject(Request $request)
+    {
+        $subject_add = Subject::updateorCreate([
+            'name' => $request->name,
+            'uniqid' => uniqid()
+        ]);
+        Log::info("Subject Added Successfully");
+        $request->session()->flash("success", "Subject Added Successfully!");
+         return redirect()->back();
+    }
+    public function subject_teacher_post(Request $request)
+    {
+        $teacher_assign = Teacher_Assign::updateorCreate([
+            'class_id' => $request->class_id,
+            'teacher_id' => Auth::user()->teacher->id,
+            'subject_id' => $request->subject_id
+        ]);
+        Log::info("Subject Added Successfully");
+        $request->session()->flash("success", "Subject Added Successfully!");
+         return redirect()->back();
     }
 }
