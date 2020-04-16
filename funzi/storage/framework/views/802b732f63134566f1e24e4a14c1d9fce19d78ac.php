@@ -59,7 +59,7 @@
                                         <label class="form-control-label"><?php echo e(__('School Name')); ?></label>
                                         <input type="text" name="stream" placeholder="stream e.g x,y"  class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" placeholder="<?php echo e(__('School Details')); ?>" readonly autofocus>
                                     </div>
-                                <input type="submit" value="Submit">
+                                <input type="submit" class="btn btn-success mt-4" value="Submit">
 
                                 </form>
 

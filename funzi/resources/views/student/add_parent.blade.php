@@ -66,7 +66,7 @@
                                             <input type="text" name="phone_number"  class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Parent Number" maxlength='10' required autofocus>
                                         </div>
 
-                                    <input type="submit" value="Submit">
+                                    <input type="submit" class="btn btn-success mt-4" value="Submit">
 
                                 </form>
                              </div>

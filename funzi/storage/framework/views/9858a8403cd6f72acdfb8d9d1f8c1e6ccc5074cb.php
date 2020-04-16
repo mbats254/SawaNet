@@ -66,6 +66,7 @@
 
                     </a>
                 </li>
+
                 <?php if(\Auth::user()->role == 'principal'): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('add.new.teacher')); ?>">
@@ -85,6 +86,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(route('add.new.class')); ?>">
 			                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Add Class')); ?>
+
+			                    </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(route('add.subjects')); ?>">
+			                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Add Subject')); ?>
 
 			                    </a>
                             </li>

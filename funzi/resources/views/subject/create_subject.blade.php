@@ -29,7 +29,7 @@
                                 </div>
 
 
-                                    <input type="submit" value="Submit">
+                                    <input type="submit" class="btn btn-success mt-4" value="Submit">
 
                                 </form>
                              </div>
