@@ -159,15 +159,15 @@
 				 <div class="modal-body-pro social-login-modal-body-pro">
 			 
 					 <div class="registration-social-login-container">
-						 <form>
+						 <form action='login.php' method='POST'>
 							 <div class="form-group">
-								 <input type="text" class="form-control" id="username" placeholder="Username">
+								 <input type="text" class="form-control" name="email" id="username" placeholder="Username">
 							 </div>
 							 <div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="Password">
+								 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
 							 </div>
 							 <div class="form-group">
-								 <button type="button" class="btn btn-green-pro btn-display-block">Sign In</button>
+								 <input type="submit" class="btn btn-green-pro btn-display-block" value="Sign In">
 							 </div>
 							 <div class="container-fluid">
 								 <div class="row no-gutters">
