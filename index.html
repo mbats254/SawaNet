@@ -159,15 +159,18 @@
 				 <div class="modal-body-pro social-login-modal-body-pro">
 			 
 					 <div class="registration-social-login-container">
-						 <form>
+						 <form class="login_form">
 							 <div class="form-group">
-								 <input type="text" class="form-control" id="username" placeholder="Username">
+									
+									<p style="display:none;color:red" id='non-existent'>Email not registered with us</p>
+								 <input type="text" class="form-control" name="email" id="username" required placeholder="Username">
 							 </div>
 							 <div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="Password">
+								 <p style="display:none;color:red" id='incorrect_password'>Password Incorrrect</p>
+								 <input type="password" class="form-control" name="password" id="password" required placeholder="Password">
 							 </div>
 							 <div class="form-group">
-								 <button type="button" class="btn btn-green-pro btn-display-block">Sign In</button>
+								 <input type='button' class="btn btn-green-pro btn-display-block login_btn" value="Sign In">
 							 </div>
 							 <div class="container-fluid">
 								 <div class="row no-gutters">
