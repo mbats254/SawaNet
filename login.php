@@ -17,7 +17,7 @@ if ($data == 1){ //if person exists proceed
 	$arrayfetch = mysqli_fetch_assoc($result);
 	
 }else {
-	echo "That email does not exist with us...!!!!_" ;
+	echo "That email does not exist with us%" ;
 }
 /*$status = $arrayfetch['account_status'];
 if ($status == 0){
@@ -47,8 +47,8 @@ if(isset($_POST['password'])){
         session_start();
    
         $_SESSION['email']=$email;
-
-        header("location: home.php");
+        echo('login successful');
+        // header("location: home.php");
     } 
     else
     {

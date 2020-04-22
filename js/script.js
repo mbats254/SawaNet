@@ -126,7 +126,44 @@ jQuery(document).ready(function($) {
 	    $(this).closest("ul.registration-genres-choice li").toggleClass("active");
 	});
 
+	$('.login_btn').click(function(e){
+		e.preventDefault;
+		var login_form = $('.login_form').serialize();
+		
+		$.ajax({ 
+            url: "login.php" ,
+            type:"POST",
+            data:login_form,
+            success:function(data){
+			
+				var split = data.split('%');
+				
+				// var email_incorrect = split[0];
+				// alert(email_incorrect);
+				if(data == 'login successful')
+				{
+					
+					window.location.replace('home.php');
+				}
+				else if(data == 'wrong password')
+				{
+					$('#incorrect_password').fadeIn();
+				}
+				else if(split[0] == 'That email does not exist with us')
+				{
+					$('#non-existent').fadeIn();
+				}
+              
+	                }
+			});
+			$('#username').keyup(function(){
+				$('#non-existent').fadeOut();
+			});
+			$('#password').keyup(function(){
+				$('#incorrect_password').fadeOut();
+			});
 
+	});
 
 	
 
