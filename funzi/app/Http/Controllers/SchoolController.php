@@ -69,6 +69,7 @@ class SchoolController extends Controller
             'user_id' => $user->id,
             'phone_number' => $request->phone_number
          ]);
+         Student::where('id','=',$request->student_id)->update(['parent_id' => $parent->id]);
          $user->notify(new WelcomeUser($user));
          Log::info("Parent Added Successfully");
 $request->session()->flash("success", "Parent Added Successfully!");

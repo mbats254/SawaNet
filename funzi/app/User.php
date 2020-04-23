@@ -53,4 +53,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Student','user_id');
     }
+    public function admin()
+    {
+        return $this->hasOne('App\Admin','user_id');
+    }
 }

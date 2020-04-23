@@ -41,7 +41,7 @@
                             <form method='POST' action='<?php echo e(route('post.class')); ?>'>
                                     <?php echo csrf_field(); ?>
                                     <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
-                                            <label class="form-control-label"><?php echo e(__('Student Email')); ?></label>
+                                            <label class="form-control-label"><?php echo e(__('Class')); ?></label>
                                         <select name="school" class="form-control">
                                   <option>1</option>
                                   <option>2</option>
@@ -53,10 +53,10 @@
                                   <option>8</option>
                                 </select>
                             </div>
-                                <label>Stream</label>
+
 
                                 <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
-                                        <label class="form-control-label"><?php echo e(__('School Name')); ?></label>
+                                        <label class="form-control-label"><?php echo e(__('Stream')); ?></label>
                                         <input type="text" name="stream" placeholder="stream e.g x,y"  class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" placeholder="<?php echo e(__('School Details')); ?>" readonly autofocus>
                                     </div>
                                 <input type="submit" class="btn btn-success mt-4" value="Submit">

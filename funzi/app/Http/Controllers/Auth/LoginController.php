@@ -33,6 +33,7 @@ class LoginController extends Controller
         // User role based on role_id 1 for applicant and 2 for employer
 
         $role = Auth::user()->role;
+        // dd($role);
         // Check user role
 
    if($role == 'principal')
@@ -49,7 +50,10 @@ class LoginController extends Controller
    {
         return route('parent.home');
    }
-
+   else if($role == 'admin')
+   {
+        return route('admin.home');
+   }
 
     }
 

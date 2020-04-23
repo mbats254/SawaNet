@@ -21,7 +21,7 @@
                         <form method='POST' action='{{ route('post.student') }}'>
                             @csrf
                             <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
-                            <label class="form-control-label">{{ __('Student Email') }}</label>
+                            <label class="form-control-label">{{ __('School Name') }}</label>
                         <select name="school" class="form-control">
                         @foreach($schools as $school => $values)
                         <option>{!! $values->name !!}</option>

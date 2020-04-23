@@ -29,14 +29,22 @@ Route::post('/post/subjects', 'SchoolController@post_subject')->name('post.subje
 
 
 //home routes
-Route::get('/home', 'HomeController@index')->name('home');
-
+Auth::routes(['verify' => true]);
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 //students routes
 Route::get('/input/student', 'StudentController@addstudent')->name('add.student');
 Route::post('/post/students', 'StudentController@post_student')->name('post.student');
-Route::post('/student/home', 'StudentController@student_home')->name('student.home');
-
+Route::get('/student/home', 'StudentController@student_home')->name('student.home');
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/view/assignment/{uniqid}', 'StudentController@view_assignment')->name('view.assignment');
+    Route::get('/view/lesson/{uniqid}', 'StudentController@view_lesson')->name('view.lesson');
+    Route::get('/all/lessons/', 'StudentController@all_lessons')->name('all.lessons');
+    Route::get('/all/assignments/', 'StudentController@all_assignments')->name('all.assignments');
+});
 //user routes
 Route::get('/set/credentials/{uniqid}', 'UserController@set_credentials')->name('set.credentials');
 Route::post('/post/credentials', 'UserController@post_credentials')->name('post.credentials');
@@ -45,8 +53,19 @@ Route::post('/post/credentials', 'UserController@post_credentials')->name('post.
 Route::get('/set/subjects', 'TeacherController@set_subjects')->name('set.subjects');
 Route::post('/select/subject/post', 'TeacherController@subject_teacher_post')->name('select.subject.post');
 Route::get('/teacher/home', 'TeacherController@teacher_home')->name('teacher.home');
+Route::get('/select/class', 'TeacherController@select_class')->name('select.class');
+Route::get('/upload/assignment/{class_id}/{subject_id}', 'TeacherController@upload_assignment')->name('upload.assignment');
+Route::get('/upload/lesson/{class_id}/{subject_id}', 'TeacherController@upload_lesson')->name('upload.lesson');
+Route::post('/assignment/post', 'TeacherController@post_assignment')->name('post.assignment');
+Route::post('/lesson/post', 'TeacherController@post_lesson')->name('post.lesson');
 
 //parent routes
 Route::get('/parent/home', 'StudentController@parent_home')->name('parent.home');
 Route::get('/students/my/children', 'StudentController@children_array')->name('children.array');
+
+//admin routes
+Route::get('/admin/home', 'AdminController@admin_home')->name('admin.home');
+Route::get('/view/unapproved', 'AdminController@view_unapproved')->name('view.unapproved');
+Route::get('/approve/account/{id}', 'AdminController@approve_account')->name('approve.account');
+
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use \App\User;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +30,9 @@ class UserController extends Controller
             'password' => $password
 
         ]);
+        // Auth::login($user);
+        Log::info("Password Set Successfully");
+        $request->session()->flash("success", "Password Set Successfully! Now Login to your account");
       return redirect()->route('home');
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\School;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,25 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'school'
+            'role' => 'principal',
+            'uniqid' => uniqid()
         ]);
-
-        $user = User::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role_id' => $data['role_id'],
-        ]);
-        $user->applicant()->save(Applicant::create([
-            'first_name' => $data['first_name'],
-            'second_name' => $data['second_name'],
-            'email' => $data['email'],
-            'user_id' => $user->id,
-            'mobileNumber' => $data['mobileNumber'],
-            'job_sector' => $data['sector']
+        $user->school()->save(School::create([
+            'name' => $data['school_name'],
+            'principal_id' => $user->id
         ]));
+        $user->sendEmailVerificationNotification();
+        return $user;
     }
 }

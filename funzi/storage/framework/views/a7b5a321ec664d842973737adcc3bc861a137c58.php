@@ -21,19 +21,21 @@
                                     <?php if(!isset($student_details)): ?>
                                     <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                                             <label class="form-control-label"><?php echo e(__('Student Email')); ?></label>
-                                        <select name="student" class="form-control">
+                                        <select name="student_id" class="form-control">
                                                 <?php $__currentLoopData = $all_students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student => $values): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option><?php echo $values->name; ?></option>
+                                                <option value="<?php echo $values->id; ?>"><?php echo $values->name; ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                             </div>
-
-                                <label>Class</label>
-                                <select name="class">
+                                            <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
+                                                <label class="form-control-label"><?php echo e(__('Student Email')); ?></label>
+                                <label class="form-control-label"><?php echo e(__('Class')); ?></label>
+                                <select name="class" class="form-control">
                                         <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $class => $values): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo $values->id; ?>"><?php echo $values->name; ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
+
                                 <?php else: ?>
                                 <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                             <label class="form-control-label"><?php echo e(__('Student Name')); ?></label>
@@ -43,6 +45,11 @@
                                 <label class="form-control-label"><?php echo e(__('Student Email')); ?></label>
                                 <input type="email" name="email"  class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" placeholder="Parent Email" value="<?php echo e($student_details->email); ?>" readonly autofocus>
                             </div>
+                            <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
+                                <label class="form-control-label"><?php echo e(__('Class')); ?></label>
+                                <input type="text" name="class" placeholder="Student Class" value="<?php echo $class_details->name; ?>" readonly class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" autofocus>
+                            </div>
+                            <input type="hidden" name="student_id" value="<?php echo $student_details->id; ?>">
                             <?php endif; ?>
                             <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                                     <label class="form-control-label"><?php echo e(__('Name')); ?></label>
@@ -56,12 +63,8 @@
                                             <label class="form-control-label"><?php echo e(__('Mobile Number')); ?></label>
                                             <input type="text" name="phone_number"  class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" placeholder="Parent Number" maxlength='10' required autofocus>
                                         </div>
-                                    <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
-                                            <label class="form-control-label"><?php echo e(__('Class')); ?></label>
-                                            <input type="text" name="class" placeholder="Student Class" value="<?php echo $class_details->name; ?>" readonly class="form-control form-control-alternative<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" autofocus>
-                                        </div>
-                                        <input type="hidden" name="student_id" value="<?php echo $student_details->id; ?>">
-                                    <input type="submit" value="Submit">
+
+                                    <input type="submit" class="btn btn-success mt-4" value="Submit">
 
                                 </form>
                              </div>

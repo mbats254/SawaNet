@@ -65,14 +65,15 @@
                 </div>
             </form>
             <!-- Navigation -->
+            @if(Auth::user()->password !== null)
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">
+                    <a class="nav-link" href="{{ route('home') }}">
                         <i class="fa fa-home text-primary"></i> {{ __('Home') }}
                     </a>
                 </li>
 
-                @if(\Auth::user()->role == 'principal')
+                @if(\Auth::user()->role == 'principal' && \Auth::user()->status == 1)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('add.new.teacher') }}">
                         <i class="fa fa-handshake text-primary"></i> {{ __('Add Teacher') }}
@@ -107,14 +108,37 @@
                                         <i class="fa fa-info text-primary"></i> {{ __('Select Class Assigned') }}
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('select.class') }}">
+                                            <i class="fa fa-info text-primary"></i> {{ __('Upload Assignment/Lesson') }}
+                                        </a>
+                                    </li>
                                 @elseif(\Auth::user()->parent)
                                 <li class="nav-item">
                                         <a class="nav-link" href="{{ route('children.array') }}">
                                             <i class="fa fa-info text-primary"></i> {{ __('Children Status') }}
                                         </a>
                                     </li>
+                                    @elseif(\Auth::user()->admin)
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('view.unapproved') }}">
+                                            <i class="fa fa-info text-primary"></i> {{ __('Approve Account') }}
+                                        </a>
+                                    </li>
+                                    @elseif(\Auth::user()->student)
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('all.lessons') }}">
+                                            <i class="fa fa-info text-primary"></i> {{ __('All Lessons') }}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('all.assignments') }}">
+                                                <i class="fa fa-info text-primary"></i> {{ __('All Assignments') }}
+                                            </a>
+                                        </li>
                             @endif
                         </ul>
+                        @endif
                     </div>
                 </li>
 

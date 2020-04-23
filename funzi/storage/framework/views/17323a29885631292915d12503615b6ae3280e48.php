@@ -19,7 +19,7 @@
                         <form method='POST' action='<?php echo e(route('post.student')); ?>'>
                             <?php echo csrf_field(); ?>
                             <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
-                            <label class="form-control-label"><?php echo e(__('Student Email')); ?></label>
+                            <label class="form-control-label"><?php echo e(__('School Name')); ?></label>
                         <select name="school" class="form-control">
                         <?php $__currentLoopData = $schools; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $school => $values): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option><?php echo $values->name; ?></option>

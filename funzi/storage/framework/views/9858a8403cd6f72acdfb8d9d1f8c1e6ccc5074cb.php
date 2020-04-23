@@ -59,15 +59,16 @@
                 </div>
             </form>
             <!-- Navigation -->
+            <?php if(Auth::user()->password !== null): ?>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">
+                    <a class="nav-link" href="<?php echo e(route('home')); ?>">
                         <i class="fa fa-home text-primary"></i> <?php echo e(__('Home')); ?>
 
                     </a>
                 </li>
 
-                <?php if(\Auth::user()->role == 'principal'): ?>
+                <?php if(\Auth::user()->role == 'principal' && \Auth::user()->status == 1): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo e(route('add.new.teacher')); ?>">
                         <i class="fa fa-handshake text-primary"></i> <?php echo e(__('Add Teacher')); ?>
@@ -102,6 +103,12 @@
 
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(route('select.class')); ?>">
+                                            <i class="fa fa-info text-primary"></i> <?php echo e(__('Upload Assignment/Lesson')); ?>
+
+                                        </a>
+                                    </li>
                                 <?php elseif(\Auth::user()->parent): ?>
                                 <li class="nav-item">
                                         <a class="nav-link" href="<?php echo e(route('children.array')); ?>">
@@ -109,8 +116,29 @@
 
                                         </a>
                                     </li>
+                                    <?php elseif(\Auth::user()->admin): ?>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(route('view.unapproved')); ?>">
+                                            <i class="fa fa-info text-primary"></i> <?php echo e(__('Approve Account')); ?>
+
+                                        </a>
+                                    </li>
+                                    <?php elseif(\Auth::user()->student): ?>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(route('all.lessons')); ?>">
+                                            <i class="fa fa-info text-primary"></i> <?php echo e(__('All Lessons')); ?>
+
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo e(route('all.assignments')); ?>">
+                                                <i class="fa fa-info text-primary"></i> <?php echo e(__('All Assignments')); ?>
+
+                                            </a>
+                                        </li>
                             <?php endif; ?>
                         </ul>
+                        <?php endif; ?>
                     </div>
                 </li>
 
