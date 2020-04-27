@@ -65,6 +65,7 @@ $request->session()->flash("success", "Student Added Successfully!");
              $student_details = Student::find($array[$i]);
              array_push($children,$student_details);
          }
+
         return view('parent.children_array',compact('parent','children'));
      }
      public function view_assignment(Request $request,$uniqid)
@@ -94,6 +95,13 @@ $request->session()->flash("success", "Student Added Successfully!");
          $assignments = Assignment::where('class_id','=',$class->id)->get();
          return view('student.all_assignments',compact('assignments'));
 
+     }
+     public function student_details(Request $request,$uniqid)
+     {
+         $student_details = Student::where('uniqid','=',$uniqid)->get()->first();
+         $lessons = Lesson::where('class_id','=',$student_details->class_id)->get();
+         $assignments = Assignment::where('class_id','=',$student_details->class_id)->get();
+         return view('parent.student_details',compact('student_details','assignments','lessons'));
      }
 
 }

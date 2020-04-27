@@ -103,7 +103,7 @@ class TeacherController extends Controller
             $i_student->notify(new Assignment_Sent($assignment,$i_student,$subject,$date));
             $parent->notify(new AssignmentSentParent($assignment,$i_student,$subject,$date));
         }
-        dd($parent);
+
         Log::info("Assignment posted Successfully");
         $request->session()->flash("success", "Assignment posted Successfully!");
          return redirect()->back();
@@ -155,7 +155,7 @@ class TeacherController extends Controller
 
             $i_student = $students[$i];
             $parent = Parents::find($i_student->parent_id);
-            $i_student->notify(new LessonPostedParent($lesson,$i_student,$subject,$date));
+            $parent->notify(new LessonPostedParent($lesson,$i_student,$subject,$date));
             $i_student->notify(new Lesson_Sent($lesson,$i_student,$subject,$date));
         }
         Log::info("Lesson posted Successfully");

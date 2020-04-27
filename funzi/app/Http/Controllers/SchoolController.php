@@ -13,6 +13,7 @@ use \App\Teacher;
 use \App\Subject;
 use \App\Teacher_Assign;
 use App\Notifications\WelcomeUser;
+use App\Notifications\NewChildInSystem;
 
 class SchoolController extends Controller
 {
@@ -50,29 +51,49 @@ class SchoolController extends Controller
     }
     public function post_parent(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
 
-        ]);
+
+        // $request->validate([
+        //     'email' => 'required|string|email|max:255|unique:users',
+
+        // ]);
       $student_details = Student::find($request->student_id);
-        $user = User::updateorCreate([
+      $user_count = User::where('email','=',$request->email)->get()->count();
+      if ($user_count < 1) {
+          $user = User::updateorCreate([
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'parent',
             'uniqid' => uniqid()
          ]);
-
-    $parent = Parents::updateorCreate([
+         $parent = Parents::updateorCreate([
             'name' => $request->name,
             'email' => $request->email,
             'children_array' => $request->student_id,
             'user_id' => $user->id,
             'phone_number' => $request->phone_number
          ]);
-         Student::where('id','=',$request->student_id)->update(['parent_id' => $parent->id]);
          $user->notify(new WelcomeUser($user));
+      }
+      else {
+
+          $parent = Parents::where('email','=',$request->email)->get()->first();
+          $user = User::find($parent->user_id);
+          $array = explode(',',$parent->children_array);
+          $student = Student::find($request->student_id);
+          if(!in_array($request->student_id,$array))
+          {
+            array_push($array,$request->student_id);
+          }
+          $children_array = implode(',',$array);
+          Parents::where('email','=',$request->email)->update(['children_array' => $children_array]);
+          $user->notify(new NewChildInSystem($user,$student));
+      }
+
+         Student::where('id','=',$request->student_id)->update(['parent_id' => $parent->id]);
+
          Log::info("Parent Added Successfully");
-$request->session()->flash("success", "Parent Added Successfully!");
+      $request->session()->flash("success", "Parent Added Successfully!");
          return redirect()->route('home');
     }
     public function addteacher(Request $request)

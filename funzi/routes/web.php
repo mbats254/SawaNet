@@ -62,6 +62,7 @@ Route::post('/lesson/post', 'TeacherController@post_lesson')->name('post.lesson'
 //parent routes
 Route::get('/parent/home', 'StudentController@parent_home')->name('parent.home');
 Route::get('/students/my/children', 'StudentController@children_array')->name('children.array');
+Route::get('/child/student/details/{uniqid}', 'StudentController@student_details')->name('student.details');
 
 //admin routes
 Route::get('/admin/home', 'AdminController@admin_home')->name('admin.home');

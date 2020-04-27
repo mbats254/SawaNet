@@ -9,7 +9,7 @@
                 <div class="card-header">Student Details</div>
 
                 <div class="card-body">
-                  {!! $values->name !!}
+                  <a href="{{ route('student.details',[$values->uniqid]) }}">{!! $values->name !!}</a>
                 </div>
             </div>
         </div>
