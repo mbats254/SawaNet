@@ -57,7 +57,7 @@
 
                                 <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                                         <label class="form-control-label">{{ __('Stream') }}</label>
-                                        <input type="text" name="stream" placeholder="stream e.g x,y"  class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('School Details') }}" readonly autofocus>
+                                        <input type="text" name="stream" placeholder="stream e.g x,y"  class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('School Details') }}" required autofocus>
                                     </div>
                                 <input type="submit" class="btn btn-success mt-4" value="Submit">
 

@@ -22,11 +22,7 @@
                             @csrf
                             <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                             <label class="form-control-label">{{ __('School Name') }}</label>
-                        <select name="school" class="form-control">
-                        @foreach($schools as $school => $values)
-                        <option>{!! $values->name !!}</option>
-                        @endforeach
-                        </select>
+                            <input type="text" name="name"  class="form-control form-control-alternative{{ $errors->has('grant_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Student Name') }}" value="" required autofocus>
                             </div>
                         <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                             <label class="form-control-label">{{ __('Student Name') }}</label>
