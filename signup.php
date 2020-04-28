@@ -12,8 +12,8 @@ if($confirm_password == $password)
     if($insert)
     {
         session_start();
-        $email = $_SESSION['email'];
-         header("location: dashboard-home.html");
+        $_SESSION['email'] = $email;
+         header("location: home.php");
     }
     else {
        
