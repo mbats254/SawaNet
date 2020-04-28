@@ -21,6 +21,11 @@
                             <form method='POST' action='{{ route('select.subject.post') }}'>
                                     @csrf
 
+                                    <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label">{{ __('Teacher Name') }}</label>
+                                    <input type="text" name="teacher_name"  class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="teacher Name" value="{!! $teacher_details->name !!}" readonly autofocus>
+                                    </div>
+                                    <input type="hidden" name="teacher_id" value="{!! $teacher_details->id !!}">
                                 <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                             <label class="form-control-label">{{ __('Class Name') }}</label>
                             <select name="class" class="form-control">
@@ -30,13 +35,15 @@
                                   </select>
                         </div>
                         <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
-                                <label class="form-control-label">{{ __('Class Name') }}</label>
+                                <label class="form-control-label">{{ __('Subject Name') }}</label>
                                 <select name="subject" class="form-control">
                                     @foreach($subjects as $subject => $values)
                                     <option value="{!! $values->id !!}">{!! $values->name !!}</option>
                                     @endforeach
                                       </select>
                             </div>
+
+
 
                                    <input type="submit" value="Submit">
 

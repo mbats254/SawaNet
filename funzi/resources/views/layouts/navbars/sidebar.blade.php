@@ -102,13 +102,13 @@
 			                        <i class="fa fa-info text-primary"></i> {{ __('Add Subject') }}
 			                    </a>
                             </li>
-                            @elseif(\Auth::user()->teacher)
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('set.subjects') }}">
-                                        <i class="fa fa-info text-primary"></i> {{ __('Select Class Assigned') }}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
+                                <a class="nav-link" href="{{ route('select.teachers') }}">
+			                        <i class="fa fa-info text-primary"></i> {{ __('Assign Teacher To Class') }}
+			                    </a>
+                            </li>
+                            @elseif(\Auth::user()->teacher)
+                                                    <li class="nav-item">
                                         <a class="nav-link" href="{{ route('select.class') }}">
                                             <i class="fa fa-info text-primary"></i> {{ __('Upload Assignment/Lesson') }}
                                         </a>

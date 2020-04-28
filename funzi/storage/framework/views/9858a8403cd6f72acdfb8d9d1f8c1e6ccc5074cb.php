@@ -96,14 +96,14 @@
 
 			                    </a>
                             </li>
-                            <?php elseif(\Auth::user()->teacher): ?>
                             <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('set.subjects')); ?>">
-                                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Select Class Assigned')); ?>
+                                <a class="nav-link" href="<?php echo e(route('select.teachers')); ?>">
+			                        <i class="fa fa-info text-primary"></i> <?php echo e(__('Assign Teacher To Class')); ?>
 
-                                    </a>
-                                </li>
-                                <li class="nav-item">
+			                    </a>
+                            </li>
+                            <?php elseif(\Auth::user()->teacher): ?>
+                                                    <li class="nav-item">
                                         <a class="nav-link" href="<?php echo e(route('select.class')); ?>">
                                             <i class="fa fa-info text-primary"></i> <?php echo e(__('Upload Assignment/Lesson')); ?>
 

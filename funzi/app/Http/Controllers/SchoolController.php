@@ -126,7 +126,8 @@ class SchoolController extends Controller
             'email' => $request->email,
             'school_id' => $request->school_id,
             'user_id' => $user->id,
-            'phone_number' => $request->phone_number
+            'phone_number' => $request->phone_number,
+            'uniqid' => uniqid()
          ]);
          $user->notify(new WelcomeUser($user));
          Log::info("Teacher Added Successfully");
@@ -149,5 +150,21 @@ class SchoolController extends Controller
         $request->session()->flash("success", "Subject Added Successfully!");
          return redirect()->back();
     }
+    public function select_teachers(Request $request)
+    {
+        $school = School::where('principal_id','=',Auth::user()->id)->get()->first();
+        $teachers = Teacher::where('school_id','=',$school->id)->get();
+        return view('teacher.all_teachers',compact('teachers'));
+    }
+    public function set_subjects(Request $request,$uniqid)
+    {
+        $teacher_details = Teacher::where('uniqid','=',$uniqid)->get()->first();
+        $school = School::where('principal_id','=',Auth::user()->id)->get()->first();
+        $classes = Darasa::where('school_id','=',$school->id)->get();
+
+        $subjects = Subject::where('school_id','=',$school->id)->get();
+        return view('teacher.select_subject',compact('classes','subjects','teacher_details'));
+    }
+
 
 }

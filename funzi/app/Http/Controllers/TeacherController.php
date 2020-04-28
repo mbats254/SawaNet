@@ -35,14 +35,14 @@ class TeacherController extends Controller
         $subject = Subject::find($request->subject);
         $teacher_assign = Teacher_Assign::updateorCreate([
             'class_id' => $request->class,
-            'teacher_id' => Auth::user()->teacher->id,
+            'teacher_id' => $request->teacher_id,
             'subject_id' => $request->subject,
             'subject_name' => $subject->name,
             'class_name' => $class->name
         ]);
         Log::info("Subject And Class Assigned Successfully");
         $request->session()->flash("success", "Subject And Class Assigned Successfully!");
-         return redirect()->back();
+         return redirect()->route('home');
     }
     public function teacher_home(Request $request)
     {
@@ -93,7 +93,7 @@ class TeacherController extends Controller
         ]);
         $students = Student::where('class_id','=',$request->class_id)->get();
         $subject = Subject::find($request->subject_id);
-        $date = date("d M Y", strtotime($request->due_date));
+        $date = date("l jS\, F Y", strtotime($request->due_date));
 
         for($i=0;$i<sizeof($students);$i++)
         {
@@ -148,7 +148,7 @@ class TeacherController extends Controller
         ]);
         $students = Student::where('class_id','=',$request->class_id)->get();
         $subject = Subject::find($request->subject_id);
-        $date = date("d M Y", strtotime($request->due_date));
+        $date = date("l jS\, F Y", strtotime($request->due_date));
 
         for($i=0;$i<sizeof($students);$i++)
         {
