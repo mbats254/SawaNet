@@ -14,6 +14,7 @@ use \App\Subject;
 use \App\Teacher_Assign;
 use App\Notifications\WelcomeUser;
 use App\Notifications\NewChildInSystem;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolController extends Controller
 {
@@ -25,8 +26,10 @@ class SchoolController extends Controller
     {
         $name = $request->standard.''.$request->stream;
 
+        $school = School::where('principal_id','=',Auth::user()->id)->get()->first();
         Darasa::updateorCreate([
-            'name' => $name
+            'name' => $name,
+            'school_id' => $school->id
         ]);
         return redirect()->back();
     }

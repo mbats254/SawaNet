@@ -42,7 +42,7 @@
                                     @csrf
                                     <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                                             <label class="form-control-label">{{ __('Class') }}</label>
-                                        <select name="school" class="form-control">
+                                        <select name="standard" class="form-control">
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
