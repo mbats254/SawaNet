@@ -139,9 +139,11 @@ class SchoolController extends Controller
     }
     public function post_subject(Request $request)
     {
+        $school = School::where('principal_id','=',Auth::user()->id)->get()->first();
         $subject_add = Subject::updateorCreate([
             'name' => $request->name,
-            'uniqid' => uniqid()
+            'uniqid' => uniqid(),
+            'school_id' => $school->id
         ]);
         Log::info("Subject Added Successfully");
         $request->session()->flash("success", "Subject Added Successfully!");
