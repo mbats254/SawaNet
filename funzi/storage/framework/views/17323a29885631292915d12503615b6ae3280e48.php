@@ -20,11 +20,7 @@
                             <?php echo csrf_field(); ?>
                             <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                             <label class="form-control-label"><?php echo e(__('School Name')); ?></label>
-                        <select name="school" class="form-control">
-                        <?php $__currentLoopData = $schools; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $school => $values): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option><?php echo $values->name; ?></option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
+                            <input type="text" name="name"  class="form-control form-control-alternative<?php echo e($errors->has('grant_name') ? ' is-invalid' : ''); ?>" placeholder="<?php echo e(__('Student Name')); ?>" value="" required autofocus>
                             </div>
                         <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                             <label class="form-control-label"><?php echo e(__('Student Name')); ?></label>

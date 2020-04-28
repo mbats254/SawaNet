@@ -18,8 +18,10 @@ class StudentController extends Controller
 {
      public function addstudent(Request $request)
      {
+         $school = School::where('principal_id','=',Auth::user()->id)->get()->first();
          $schools = School::all();
-         $classes = Darasa::all();
+         $classes = Darasa::where('school_id','=',$school->id)->get();
+
          return view('student.create_student',compact('schools','classes'));
      }
      public function post_student(Request $request)
