@@ -39,7 +39,8 @@ $student =  Student::updateorCreate([
             'name' => $request->name,
             'email' => $request->email,
             'class_id' => $request->class,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'uniqid' => uniqid()
          ]);
 
          $user->notify(new WelcomeUser($user));
