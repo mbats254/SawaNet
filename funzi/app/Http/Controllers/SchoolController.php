@@ -31,6 +31,8 @@ class SchoolController extends Controller
             'name' => $name,
             'school_id' => $school->id
         ]);
+        Log::info("Class Added Successfully");
+        $request->session()->flash("success", "Class Added Successfully!");
         return redirect()->back();
     }
     public function addparent(Request $request,$uniqid=null)
