@@ -18,7 +18,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0"><?php echo e(__('Welcome!')); ?></h6>
+                        <h6 class="text-overflow m-0"><?php echo e(__('Welcome ')); ?><?php echo \Auth::user()->name; ?></h6>
                     </div>
                     
                     <div class="dropdown-divider"></div>
@@ -31,4 +31,5 @@
             </li>
         </ul>
     </div>
-</nav><?php /**PATH D:\Laravel Projects\funzi\resources\views/layouts/navbars/navs/auth.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH D:\Laravel Projects\funzi\resources\views/layouts/navbars/navs/auth.blade.php ENDPATH**/ ?>
