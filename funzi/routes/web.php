@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
 //user routes
 Route::get('/set/credentials/{uniqid}', 'UserController@set_credentials')->name('set.credentials');
 Route::post('/post/credentials', 'UserController@post_credentials')->name('post.credentials');
+Route::post('/contact/us/', 'UserController@contact_us')->name('contact.us');
 
 //teacher routes
 

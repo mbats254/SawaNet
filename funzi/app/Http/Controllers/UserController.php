@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use \App\User;
+use \App\ContactUs;
+use \App\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\Contact;
 class UserController extends Controller
 {
     //
@@ -36,5 +39,27 @@ class UserController extends Controller
       return redirect()->route('home');
 
 
+    }
+    public function contact_us(Request $request)
+    {
+
+        $contact_us = ContactUs::updateorCreate([
+            'name' => $request->name,
+            'email' => $request->email,
+            'school_type' => $request->school_type,
+            'uniqid' => uniqid(),
+
+        ]);
+
+        $admin = Admin::get();
+        for($i=0;$i<$admin->count();$i++)
+        {
+            $this_admin = $admin[$i];
+            $this_admin->notify(new Contact($this_admin,$contact_us));
+        }
+        Log::info("Posted Successfully");
+        $request->session()->flash("success", "Subscription Successful");
+      return redirect()->back();
+        //
     }
 }
