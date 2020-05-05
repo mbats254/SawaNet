@@ -11,8 +11,17 @@
 		<link rel="stylesheet" href="icons/fontawesome/css/fontawesome-all.min.css"><!-- FontAwesome Icons -->
 		<link rel="stylesheet" href="icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css"><!-- iconsmind.com Icons -->
 		
-		
-		<title>SKRN - Media Streaming App</title>
+		<script text="javascript" src="js/timingsrc-v2.js"></script>
+		<script text="javascript" src="https://mcorp.no/lib/mediasync.js"></script>
+		<script type="text/javascript" src="http://www.mcorp.no/lib/mcorp-2.0.js"></script>  
+				  <!-- Required Framework JavaScript -->
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- jQuery -->
+		  <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script> -->
+	  	<link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
+		<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+		<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+		<title>Docubox Cinema</title>
 	</head>
 	<body>
 		<div id="sidebar-bg">
@@ -368,7 +377,7 @@
 		
 		<main id="col-main-with-sidebar">
 			
-			<div id="movie-detail-header-pro" style="background-image:url('http://via.placeholder.com/1442x775')">
+			<div id="" style="background-image:url('http://via.placeholder.com/1442x775')">
 				
 				<div class="progression-studios-slider-more-options">
 					<i class="fas fa-ellipsis-h"></i>
@@ -381,13 +390,15 @@
 					</ul>
 				</div>
 				
-				<a class="movie-detail-header-play-btn afterglow" href="#VideoLightbox-1"><i class="fas fa-play"></i></a>
+				<!-- <a class="movie-detail-header-play-btn afterglow" href="#my_video_"><i class="fas fa-play"></i></a> -->
 				
-	         <video id="VideoLightbox-1"  poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" width="960" height="540">
-	             <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" type="video/mp4">
-	             <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.webm" type="video/webm">
-	         </video>
-				
+				<video id="my_video_1" class="video-js  vjs-default-skin" width="640px" height="267px"
+				controls preload="auto" poster='http://video-js.zencoder.com/oceans-clip.jpg'
+				data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+			  <source src="https://delivaflix.co.ke/video/Fkj-Skyline.mp4" type='video/mp4' />
+			  <!-- <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' /> -->
+			</video>
+<!-- 				
 				<div id="movie-detail-header-media">
 					<div class="dashboard-container">
 						<h5>Media</h5>						
@@ -419,15 +430,18 @@
 									</div>
 								</a>
 							</div>
-						</div><!-- close .row -->
-					</div><!-- close .dashboard-container -->
-				</div><!-- close #movie-detail-header-media -->
+						</div>-->
+						<!-- close .row -->
+				<!-- close .dashboard-container	
+				</div>
+				</div>  -->
+				<!-- close #movie-detail-header-media -->
 				
-				<div id="movie-detail-gradient-pro"></div>
+				<!-- <div id="movie-detail-gradient-pro"></div> -->
 			</div><!-- close #movie-detail-header-pro -->
 			
 			
-			<div id="movie-detail-rating">
+			<!-- <div id="movie-detail-rating">
 				<div class="dashboard-container">
 					<div class="row">
 						<div class="col-sm">
@@ -483,12 +497,27 @@
 					      ><span style="color:#42b740;">8.6</span></div>
 							<div class="clearfix"></div>
 						</div>
-					</div><!-- close .row -->
-				</div><!-- close .dashboard-container -->
-			</div><!-- close #movie-detail-rating -->
+					</div>
+				</div>
+			</div> -->
+			<!-- close #movie-detail-rating -->
 			
 			<div class="dashboard-container">
+				<div id="demo" style="height:50px;margin-bottom:3em">
+
+					<p id='buttons'>
+					  <button id='tostart'>Reset</button>
+					  <button id='pause'>Pause</button>
+					  <b><button id='forward'>Play</button></b>
+					  <button id='skipbackward'>Skip 5 Back </button>
+					  <button id='skipforward'>Skip 5 Ahead</button>
+					 
+					</p>
+					<p> Global timer: 
+					   <b><span id='position'></span></b>
+					</p>
 				
+				  </div>
 				
 				<div class="movie-details-section">
 					<h2>Storyline</h2>
@@ -617,7 +646,8 @@ Thor</a></h6>
 		<script src="js/libs/popper.min.js" defer></script><!-- Bootstrap Popper/Extras JS -->
 		<script src="js/libs/bootstrap.min.js" defer></script><!-- Bootstrap Main JS -->
 		<!-- All JavaScript in Footer -->
-		
+		<script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
+		<script src="js/sync_script.js"></script>
 		<!-- Additional Plugins and JavaScript -->
 		<script src="js/navigation.js" defer></script><!-- Header Navigation JS Plugin -->
 		<script src="js/jquery.flexslider-min.js" defer></script><!-- FlexSlider JS Plugin -->
