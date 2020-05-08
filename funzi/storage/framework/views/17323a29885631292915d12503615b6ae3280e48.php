@@ -20,7 +20,7 @@
                             <?php echo csrf_field(); ?>
                             <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                             <label class="form-control-label"><?php echo e(__('School Name')); ?></label>
-                            <input type="text" name="name"  class="form-control form-control-alternative<?php echo e($errors->has('grant_name') ? ' is-invalid' : ''); ?>" placeholder="<?php echo e(__('Student Name')); ?>" value="" required autofocus>
+                            <input type="text" name="name"  class="form-control form-control-alternative<?php echo e($errors->has('grant_name') ? ' is-invalid' : ''); ?>" placeholder="<?php echo e(__('Student Name')); ?>" value="<?php echo $school->name; ?>" readonly autofocus>
                             </div>
                         <div class="form-group<?php echo e($errors->has('application_form') ? ' has-danger' : ''); ?>">
                             <label class="form-control-label"><?php echo e(__('Student Name')); ?></label>

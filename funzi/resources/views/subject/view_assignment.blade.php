@@ -22,6 +22,7 @@
                         <br/><br/>
                         <b>Date Due:</b> {!! date("d M Y", strtotime($assignment->due_date)) !!}
                     </div>
+                    <a href="{{ route('send.assignment',[$assignment->uniqid]) }}">Send Assignment</a>
                 </div>
                 @endif
             </div>

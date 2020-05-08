@@ -9,7 +9,7 @@ class Student extends Model
 {
     use Notifiable;
     protected $fillable = [
-        'name', 'email','user_id','class_id','parent_id'
+        'name', 'email','user_id','class_id','parent_id','uniqid'
     ];
     public function user()
     {

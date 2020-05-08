@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view/lesson/{uniqid}', 'StudentController@view_lesson')->name('view.lesson');
     Route::get('/all/lessons/', 'StudentController@all_lessons')->name('all.lessons');
     Route::get('/all/assignments/', 'StudentController@all_assignments')->name('all.assignments');
+    Route::get('/send/assignment/{uniqid}', 'StudentController@send_assignments')->name('send.assignment');
+    Route::post('/send/assignment/post', 'StudentController@send_assignments_post')->name('send.assignment.student');
 });
 //user routes
 Route::get('/set/credentials/{uniqid}', 'UserController@set_credentials')->name('set.credentials');

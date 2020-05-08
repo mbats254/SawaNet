@@ -175,7 +175,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\Laravel Projects\\funzi\\storage\\framework/cache/data',
+        'path' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -314,12 +314,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Laravel Projects\\funzi\\storage\\app',
+        'root' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Laravel Projects\\funzi\\storage\\app/public',
+        'root' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -365,13 +365,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
+        'path' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
+        'path' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -421,7 +421,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
+        'path' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -444,7 +444,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\Laravel Projects\\funzi\\resources\\views/vendor/mail',
+        0 => 'D:\\Project\\Laravel Projects\\funzi\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -523,7 +523,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\Laravel Projects\\funzi\\storage\\framework/sessions',
+    'files' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -543,9 +543,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\Laravel Projects\\funzi\\resources\\views',
+      0 => 'D:\\Project\\Laravel Projects\\funzi\\resources\\views',
     ),
-    'compiled' => 'D:\\Laravel Projects\\funzi\\storage\\framework\\views',
+    'compiled' => 'D:\\Project\\Laravel Projects\\funzi\\storage\\framework\\views',
   ),
   'flare' => 
   array (

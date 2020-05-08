@@ -13,6 +13,7 @@ use \App\Subject;
 use App\Notifications\WelcomeUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use \App\PostedAssignments;
 
 class StudentController extends Controller
 {
@@ -22,7 +23,7 @@ class StudentController extends Controller
          $schools = School::all();
          $classes = Darasa::where('school_id','=',$school->id)->get();
 
-         return view('student.create_student',compact('schools','classes'));
+         return view('student.create_student',compact('school','classes'));
      }
      public function post_student(Request $request)
      {
@@ -106,5 +107,41 @@ $request->session()->flash("success", "Student Added Successfully!");
          $assignments = Assignment::where('class_id','=',$student_details->class_id)->get();
          return view('parent.student_details',compact('student_details','assignments','lessons'));
      }
+     public function send_assignments(Request $request,$uniqid)
+     {
+        $assignment = Assignment::where('uniqid','=',$uniqid)->get()->first();
+        if(strtotime($assignment->due_date) - time() < 0)
+        {
+            Log::info("You can`t post the Assignment");
+            $request->session()->flash("error", "Deadline has Passed. You can`t post the Assignment!");
+            return redirect()->back();
+        }
+        else {
+            $student = \Auth::user();
+           return view('student.post_assignment',compact('student','assignment'));
+        }
+     }
+     public function send_assignments_post(Request $request)
+     {
 
+         $class = Darasa::find(\Auth::user()->student->class_id);
+         $assignment_post = Assignment::where('uniqid','=',$request->assignment_uniqid)->get()->first();
+        $subject = Subject::find($assignment_post->subject_id);
+        $assignment = $request->file('assignment');
+        $request->file('assignment')->move(base_path() . '/public/pdf/posted_assignments', $assign_file = str_replace(" ", "_", '/pdf/posted_assignments/'.Auth::user()->student->name.'_'.$class->name.'_'.$subject->name.'_'.$request->assignment_uniqid.'_Assignment') . "." . $assignment->getClientOriginalExtension());
+
+        PostedAssignments::updateorCreate([
+            'assignment' => $assign_file,
+            'student_id' => Auth::user()->student->id,
+            'class_id' => $class->id,
+            'subject_id' => $subject->id,
+            'uniqid' => uniqid(),
+            'assignment_id' => $assignment_post->id
+
+         ]);
+
+         return redirect()->route('home');
+         Log::info("Assignment Posted Successfully. Wait for Teacher`s review");
+         $request->session()->flash("success", "Assignment Posted Successfully. Wait for Teacher`s review!");
+     }
 }

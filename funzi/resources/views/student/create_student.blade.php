@@ -22,7 +22,7 @@
                             @csrf
                             <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                             <label class="form-control-label">{{ __('School Name') }}</label>
-                            <input type="text" name="name"  class="form-control form-control-alternative{{ $errors->has('grant_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Student Name') }}" value="" required autofocus>
+                            <input type="text" name="name"  class="form-control form-control-alternative{{ $errors->has('grant_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Student Name') }}" value="{!! $school->name !!}" readonly autofocus>
                             </div>
                         <div class="form-group{{ $errors->has('application_form') ? ' has-danger' : '' }}">
                             <label class="form-control-label">{{ __('Student Name') }}</label>
