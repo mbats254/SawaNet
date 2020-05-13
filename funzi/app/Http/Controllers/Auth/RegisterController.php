@@ -9,6 +9,7 @@ use App\School;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\VerifyEmailAddress;
 
 class RegisterController extends Controller
 {
@@ -77,7 +78,8 @@ class RegisterController extends Controller
             'name' => $data['school_name'],
             'principal_id' => $user->id
         ]));
-        $user->sendEmailVerificationNotification();
-        // return $user;
+        // VerifyEmailAddress
+        $user->notify(new VerifyEmailAddress($user));
+        return $user;
     }
 }

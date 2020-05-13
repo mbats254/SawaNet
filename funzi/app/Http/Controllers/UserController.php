@@ -13,9 +13,16 @@ class UserController extends Controller
 {
     //
 
-    public function create_teachers(Request $request)
+    public function verify_email(Request $request,$uniqid)
     {
+        $user = User::where('uniqid','=',$uniqid)->get()->first();
+        $current_time = date("h:i:sa");
+        $time_format = date_create($current_time);
+         User::where('uniqid','=',$uniqid)->update(['email_verified_at' => $time_format]);
+         $user = User::find($user->id);
 
+         Auth::login($user);
+        // return redirect()->route('home');
     }
 
     public function set_credentials(Request $request,$uniqid)

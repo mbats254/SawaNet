@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/all/lessons/', 'StudentController@all_lessons')->name('all.lessons');
     Route::get('/all/assignments/', 'StudentController@all_assignments')->name('all.assignments');
     Route::get('/send/assignment/{uniqid}', 'StudentController@send_assignments')->name('send.assignment');
+    Route::get('/verify/email/{uniqid}', 'UserController@verify_email')->name('verify.email');
     Route::post('/send/assignment/post', 'StudentController@send_assignments_post')->name('send.assignment.student');
 });
 //user routes
