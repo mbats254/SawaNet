@@ -78,8 +78,8 @@ class RegisterController extends Controller
             'name' => $data['school_name'],
             'principal_id' => $user->id
         ]));
-        // VerifyEmailAddress
-        $user->notify(new VerifyEmailAddress($user));
+
+        $user->sendEmailVerificationNotification();
         return $user;
     }
 }
