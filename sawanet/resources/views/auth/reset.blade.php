@@ -11,17 +11,17 @@
                         <div class="text-center text-muted mb-4">
                             <small>{{ __('Reset Password') }}</small>
                         </div>
-                        <form role="form" method="POST" action="{{ route('password.update') }}">
+                        <form role="form" method="POST" action="{{ route('password.update.post') }}">
                             @csrf
 
-                            <input type="hidden" name="token" value="{{ $token }}">
+
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $user->email ?? old('email') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $user->email }}" required autofocus>
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

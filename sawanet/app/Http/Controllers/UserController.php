@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Notifications\UserSubscriptionNotification;
 use App\Notifications\AdminSubscriptionNotification;
+use App\Notifications\ResetPasswordNotification;
 use Nexmo\Laravel\Facade\Nexmo;
 
 class UserController extends Controller
@@ -83,6 +84,31 @@ class UserController extends Controller
         Log::info("Subscription Successful. Please wait for approval from the System Admin");
         $request->session()->flash("success", "Subscription Successful. Please wait for approval from the System Admin");
         return redirect()->back();
+    }
+
+    public function password_email_send(Request $request)
+    {
+        $count = User::where('email','=',$request->email)->get()->count();
+        $user = User::where('email','=',$request->email)->get()->first();
+        if($count < 1)
+        {
+        Log::info("Credentials not in our system");
+        $request->session()->flash("error", "Credentials not in our system");
+        return redirect()->back();
+        }
+        else {
+            $user->notify(new ResetPasswordNotification($user));
+        }
+        Log::info("Message Sent Successfully. Please Check Your Email to Reset Your Password.");
+        $request->session()->flash("success", "Message Sent Successfully. Please Check Your Email to Reset Your Password.");
+        return redirect()->back();
+    }
+
+    public function reset_password(Request $request)
+    {
+        $user = User::where('uniqid','=',$request->uniqid)->get()->first();
+        return view('auth.reset',compact('user'));
+
     }
 
 }

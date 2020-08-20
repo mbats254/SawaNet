@@ -9,7 +9,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <h4 class="text-muted">{{ __('Sign into your SawaNet') }}</h4>
+                            <h4 class="text-muted">{{ __('Sign into your Taste Of Manhattan') }}</h4>
                             <hr>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
