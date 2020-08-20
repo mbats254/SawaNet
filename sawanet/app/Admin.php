@@ -9,4 +9,9 @@ class Admin extends Model
     protected $fillable = [
         'name', 'email', 'contact','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

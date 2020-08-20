@@ -40,5 +40,7 @@ Route::post('/post/customer/payments', 'AdminController@customer_payment_post')-
 Route::get('/send/payment/notification/{uniqid}', 'AdminController@send_payment_notification')->name('send.payment.notification');
 Route::get('/enter/payment/details/{uniqid}', 'AdminController@enter_payment_details')->name('enter.payment.details');
 Route::get('/installation/confirmation/{uniqid}', 'AdminController@installation_confirmation')->name('installation.confirmation');
+Route::get('/add/customer/subscription', 'AdminController@customer_subscription')->name('add.customer.subscription');
+Route::post('/post/customer/subscription', 'AdminController@post_customer_subscription')->name('post.customer.package');
 
 });

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Notifications\UserSubscriptionNotification;
 use App\Notifications\AdminSubscriptionNotification;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class UserController extends Controller
 {
@@ -46,14 +47,31 @@ class UserController extends Controller
     public function subscribe_package(Request $request)
     {
         $package  = Subscription::where('uniqid','=',$request->uniqid)->get()->first();
-        $user_subscription = UserSubscription::updateorCreate([
-            'user_id' => Auth::user()->id,
-            'user_name' => Auth::user()->name,
-            'package_id' => $package->id,
-            'uniqid' => uniqid()
-        ]);
+        $subscription = UserSubscription::where('user_id','=',Auth::user()->id)->get();
+        if($subscription->count() < 1)
+        {
+            $user_subscription = UserSubscription::updateorCreate([
+                'user_id' => Auth::user()->id,
+                'user_name' => Auth::user()->name,
+                'package_id' => $package->id,
+                'uniqid' => uniqid()
+            ]);
+        }
+        else
+        {
+            UserSubscription::where('user_id','=',Auth::user()->id)->update([
+                'package_id' => $package->id
+            ]);
+            $user_subscription = $subscription->first();
+        }
+
 
         $user = User::find(Auth::user()->id);
+        // Nexmo::message()->send([
+        //     'to'   => '+254708538435',
+        //     'from' => '+254708538435',
+        //     'text' => 'Using the facade to send a message.'
+        // ]);
         $user->notify(new UserSubscriptionNotification($user,$package));
         $admins = User::where('role','=','admin')->get();
         for($i=0;$i<sizeof($admins);$i++)

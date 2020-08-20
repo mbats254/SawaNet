@@ -49,7 +49,7 @@ class AdminSubscriptionNotification extends Notification
         $url = 'confirm/payments/'.$this->user_subscription->uniqid;
         return (new MailMessage)
                     ->greeting('Hello '.$this->admin->name)
-                    ->line('This is to inform you that '.$this->user->name.' has subscribed to the '.$this->package->name)
+                    ->line('This is to inform you that '.$this->user->name.' has subscribed to the '.$this->package->name.' Package')
                     ->line('Please Make Sure To Confirm Payments')
                     ->action('Confirm Payments', url($url))
                     ->line('Thank you for using our application!');

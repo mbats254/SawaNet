@@ -12,8 +12,9 @@
                             <div class="col-8">
                                 <h3 class="mb-0">{{ __('Users And Their Subscriptions') }}</h3>
                             </div>
-                            <div class="col-4 text-right">
 
+                             <div class="col-4 text-right">
+                                <a href="{{ route('add.customer.subscription') }}" class="btn btn-sm btn-primary">{{ __('Add Customer Subscription') }}</a>
                             </div>
                         </div>
                     </div>
@@ -72,11 +73,11 @@
                                       <td style="color:red">No Payments Made</td>
                                       @endif
                                       @if($diff > 0)
-                                      <td style="color:red">( Payments due on the {!! $format_date !!} of this month)</td>
+                                      <td style="color:red">( Payments due on the {!! $format_date !!} of the month)</td>
                                       <td><a href="{{ route('send.payment.notification',[$values->uniqid]) }}" class="btn btn-primary">Send Payment Notification</a></td>
                                       <td><a href="{{ route('enter.payment.details',[$values->uniqid]) }}" class="btn btn-primary">Enter Payment Details</a></td>
                                       @else
-                                      <td>Date {!! $format_date !!} of this month</td>
+                                      <td>Date {!! $format_date !!} of the month</td>
 
                                         @endif
 

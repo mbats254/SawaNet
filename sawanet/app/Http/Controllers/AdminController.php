@@ -12,6 +12,7 @@ use App\Notifications\SubscriptionConfirmation;
 use App\Notifications\PaymentNotification;
 use App\Subscription;
 use App\UserSubscription;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class AdminController extends Controller
 {
@@ -40,7 +41,7 @@ class AdminController extends Controller
         $user->notify(new WelcomeUser($user));
         Log::info($user->name ." Added Successfully");
         $request->session()->flash("success", $user->name ." Added Successfully");
-         return redirect()->back();
+         return redirect()->route('add.customer.subscription');
     }
 
     public function add_packages(Request $request)
@@ -84,6 +85,7 @@ class AdminController extends Controller
         ]);
 
         $user = User::find($user_subscription->user_id);
+
         $user->notify(new SubscriptionConfirmation($user,$package,$duration_of_subscription));
         Log::info("User Subscribed Successfully");
         $request->session()->flash("success", "User Subscribed Successfully");
@@ -130,6 +132,7 @@ class AdminController extends Controller
         ]);
 
         $user = User::find($user_subscription->user_id);
+
         $user->notify(new SubscriptionConfirmation($user,$package,$duration_of_subscription));
         Log::info("Payment Details Stored Successfully");
         $request->session()->flash("success", "Payment Details Stored Successfully");
@@ -141,5 +144,47 @@ class AdminController extends Controller
         $user = User::where('uniqid','=',$request->uniqid)->get()->first();
         return view('admin.installation',compact('user'));
 
+    }
+
+    public function customer_subscription(Request $request)
+    {
+        $user_subscription = UserSubscription::get();
+        $users_in = [];
+        for($i=0;$i<$user_subscription->count();$i++)
+        {
+            array_push($users_in,$user_subscription[$i]->user_id);
+        }
+        $users = User::where('role','=','customer')->get();
+        $users_no_package = [];
+        for($i=0;$i<sizeof($users);$i++)
+        {
+            if(!in_array($users[$i]->id,$users_in))
+            {
+                array_push($users_no_package,$users[$i]);
+            }
+        }
+
+
+        $packages = Subscription::get();
+        return view('admin.customer_add_subscription',compact('packages','users_no_package'));
+    }
+
+    public function post_customer_subscription(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $package = Subscription::find($request->package_id);
+        $duration_of_subscription = round($request->amount_paid/$package->price);
+        $user_subscription = UserSubscription::updateorCreate([
+            'user_id' => $request->user_id,
+            'user_name' => $user->name,
+            'amount_paid' => $request->amount_paid,
+            'package_id' => $request->package_id,
+            'duration_of_subscription' =>  $duration_of_subscription,
+            'uniqid' => uniqid()
+        ]);
+
+        Log::info($user_subscription->user_name." Successfully Subscribed to the ".$package->name." package");
+        $request->session()->flash("success", $user_subscription->user_name." Successfully Subscribed to the ".$package->name." package");
+        return redirect()->back();
     }
 }

@@ -15,6 +15,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "nexmo/client": "^2.0",
         "nexmo/laravel": "^2.2"
     },
     "require-dev": {
