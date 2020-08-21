@@ -111,4 +111,23 @@ class UserController extends Controller
 
     }
 
+    public function password_update_post(Request $request)
+    {
+        $user = User::where('email','=',$request->email)->get()->first();
+        if($request->password !== $request->password_confirmation)
+        {
+            Log::info("Passwords don`t match");
+            $request->session()->flash("error", "Passwords don`t match.");
+            return redirect()->back();
+        }
+        else {
+            User::where('email','=',$request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
+            Log::info("Password Updated Successfully. Please Login to Proceed.");
+            $request->session()->flash("success", "Password Updated Successfully. Please Login to Proceed.");
+            return redirect()->route('login');
+        }
+    }
+
 }

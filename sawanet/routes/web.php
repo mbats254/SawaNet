@@ -20,6 +20,7 @@ Route::get('/set/credentials/user/{uniqid}', 'UserController@set_credentials')->
 Route::get('/reset/user/password/{uniqid}', 'UserController@reset_password')->name('reset.credentials');
 Route::post('/credentials/user/post', 'UserController@credentials_post')->name('credentials.post');
 Route::post('/password/email/send', 'UserController@password_email_send')->name('password.email.reset');
+Route::post('/password/update/post', 'UserController@password_update_post')->name('password.update.post');
 
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
